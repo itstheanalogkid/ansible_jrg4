@@ -1,6 +1,6 @@
 # Cisco Voice Gateway Configuration Management
-## NCS Communication Services
-_ajp26@buffalo.edu, 8/2021_
+## Communication Services
+
 
 # Theory
 
