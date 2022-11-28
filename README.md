@@ -14,7 +14,7 @@ Each role enforces the state of a certain block of configuration.
 However, this is not designed to strip or remove unknown sections of configuration.
 It is therefore important not to make ad-hoc changes, lest the device's configuration become unpredictable.
 
-From netstats/netstats1, use paramiko for connectivity. The system currently doesn't support standard SSH for Ansible.
+use paramiko for connectivity. The system currently doesn't support standard SSH for Ansible.
 
 # Roles
 
