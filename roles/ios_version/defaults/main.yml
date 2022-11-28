@@ -1,0 +1,15 @@
+# These are default variables that apply to the role, they may be overridden elsewhere.
+
+# Current short IOS Version
+#current_ios_version: 15.8(3)M2
+current_ios_version: 15.8(3)M8
+
+# Current IOS binary image file
+current_ciscovg_bin_image: derp.txt
+
+# True means execute code push
+#push_new_code: False
+push_new_code: True
+
+# Current Date/Time
+current_date_time: "{{ lookup('pipe', 'date') }}"

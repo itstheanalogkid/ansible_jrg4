@@ -1,0 +1,20 @@
+---
+# tasks file for name_servers
+
+- name: Set Name Servers
+  cisco.ios.ios_system:
+    name_servers: "{{ ubit_name_servers }}"
+    state: present
+
+- name: Set Domain Name
+  cisco.ios.ios_system:
+    domain_name: "{{ cisco_vg_domain_name }}"
+    state: present
+
+- name: Enable DNS Lookup
+  cisco.ios.ios_system:
+    lookup_enabled: yes
+
+- name: Save configuration if changed
+  cisco.ios.ios_config:
+    save_when: modified

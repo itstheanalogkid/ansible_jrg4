@@ -1,0 +1,9 @@
+---
+# defaults file for name_servers
+
+ubit_name_servers:
+  - 128.205.1.100
+  - 128.205.1.101
+  - 128.205.1.102
+
+cisco_vg_domain_name: devices.voip.buffalo.edu

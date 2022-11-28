@@ -1,0 +1,9 @@
+Cisco VG IOS Version Report
+Report Run Time: Fri Aug 27 15:53:09 EDT 2021
+
+The following devices were checked to see if they're running Cisco IOS 15.8(3)M8.
+
+vg-cc31-249 (10.6.31.249):
+ - Model: VG310
+ - IOS Version: BAD: 15.8(3)M2
+ - Needs Upgrade: True

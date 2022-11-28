@@ -1,0 +1,112 @@
+{
+    "ansible_facts": {
+        "ansible_net_all_ipv4_addresses": [
+            "10.6.31.249"
+        ],
+        "ansible_net_all_ipv6_addresses": [],
+        "ansible_net_api": "cliconf",
+        "ansible_net_config": "!\n! Last configuration change at 07:24:39 Est-Std Wed Oct 21 2020 by maniccia\n! NVRAM config last updated at 07:25:55 Est-Std Wed Oct 21 2020 by maniccia\n!\nversion 15.8\nno service pad\nservice timestamps debug datetime msec localtime\nservice timestamps log datetime msec localtime\nservice password-encryption\nservice internal\nservice sequence-numbers\n!\nhostname vg-cc31-249\n!\nboot-start-marker\nboot-end-marker\n!\n!\nlogging queue-limit 10000\nlogging buffered 10000000\nlogging rate-limit 10000\nno logging console\nno logging monitor\nenable secret 5 $1$g42/$bhMM9oAgKOVkmRP9IfZI..\n!\naaa new-model\n!\n!\naaa group server radius ubradius\n server name clearpass-int01\n server name clearpass-int02\n!\naaa authentication login default group ubradius local\naaa authorization exec default group ubradius local \n!\n!\n!\n!\n!\naaa session-id common\nclock timezone EST -5 0\nclock summer-time Est-Std-DST recurring\nvlan ifdescr detail\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nno ip domain lookup\nip domain name devices.voip.buffalo.edu\nip name-server 128.205.1.100\nip name-server 128.205.1.101\nip name-server 128.205.1.102\nip cef\nno ipv6 cef\nmultilink bundle-name authenticated\n!\nstcapp ccm-group 1\nstcapp\n!\nstcapp feature access-code\n!\nstcapp feature speed-dial\n!\n!\n!\nstcapp supplementary-services\n port 0/0/0\n  fallback-dn 3264\n port 0/0/1\n  fallback-dn 6453081\n port 0/0/2\n  fallback-dn 6455447\n port 0/0/3\n  fallback-dn 6455568\n port 0/0/4\n  fallback-dn 6455972\n port 0/0/6\n  fallback-dn 6456717\n port 0/0/7\n  fallback-dn 6455915\n port 0/0/8\n  fallback-dn 6452840\n port 0/0/9\n  fallback-dn 3265\n port 0/0/10\n  fallback-dn 3266\n port 0/0/11\n  fallback-dn 3267\n port 0/0/12\n  fallback-dn 3268\n port 0/0/13\n  fallback-dn 3269\n port 0/0/14\n  fallback-dn 3270\n port 0/0/15\n  fallback-dn 3271\n port 0/0/16\n  fallback-dn 3272\n port 0/0/17\n  fallback-dn 3273\n port 0/0/18\n  fallback-dn 3274\n port 0/0/19\n  fallback-dn 3275\n port 0/0/20\n  fallback-dn 3276\n port 0/0/21\n  fallback-dn 3277\n port 0/0/22\n  fallback-dn 3278\n port 0/0/23\n  fallback-dn 3279\n!\n!\n!\n!\n!\nvoice-card 0\n!\n!\n!\nvoice service voip\n fax protocol pass-through g711ulaw\n!\n!\nvoice iec syslog\n!\n!\n!\n!\nlicense udi pid VG310 sn FJC2111D0A0\nlicense accept end user agreement\nlicense boot module vg3x0 technology-package securityk9\nlicense boot module vg3x0 technology-package uck9\nlicense boot module vg3x0 technology-package datak9\nhw-module pvdm 0/0\n!\nusername Manager privilege 15 secret 5 $1$ONuj$XyBHTOlUYmLsfoUpPPvK9/\n!\n!\n!\n!\nlldp run\n!\n! \n!\n!\n!\n!\n!\n!\n!\n!\n!\ninterface Port-channel1\n no ip address\n!\ninterface GigabitEthernet0/0\n description Ensure you configure the correct VVLANID for dot1q encapsulation\n ip address dhcp\n duplex auto\n speed auto\n port-tagging\n  encapsulation dot1q 960\n  exit\n!\ninterface GigabitEthernet0/1\n no ip address\n shutdown\n duplex auto\n speed auto\n!\nip forward-protocol nd\n!\n!\nno ip http server\nno ip http secure-server\nip route 0.0.0.0 0.0.0.0 10.6.31.254\nip ssh version 2\n!\nlogging trap debugging\nlogging host 128.205.5.133\nipv6 ioam timestamp\n!\n!\nsnmp-server group ncs-voice v3 priv write ncs-voice-write access 11\nsnmp-server group ncs-voipcore v3 priv \nsnmp-server view ncs-voice-write iso included\nsnmp-server community 50ohm RO 10\nsnmp-server community HangMhi RW 11\nsnmp-server trap-source GigabitEthernet0/0\nsnmp-server queue-limit engine 500\nsnmp-server location 118a Computing Center\nsnmp-server contact NCS_Voice_Tier_3\nsnmp-server system-shutdown\nsnmp-server host 128.205.250.11 version 3 priv ncs-voipcore \nsnmp-server host 128.205.250.12 version 3 priv ncs-voipcore \naccess-list 10 remark -- SNMP Read Access --\naccess-list 10 permit 128.205.1.0 0.0.0.255\naccess-list 10 permit 128.205.3.0 0.0.0.255\naccess-list 10 permit 128.205.10.0 0.0.0.255\naccess-list 10 permit 128.205.164.0 0.0.0.31\naccess-list 10 permit 128.205.250.0 0.0.0.255\naccess-list 11 remark -- SNMP Write and Telnet Access --\naccess-list 11 permit 128.205.1.0 0.0.0.255\naccess-list 11 permit 128.205.3.0 0.0.0.255\naccess-list 11 permit 128.205.10.0 0.0.0.255\naccess-list 11 permit 128.205.242.0 0.0.0.127\naccess-list 11 permit 128.205.250.0 0.0.0.255\naccess-list 11 permit 128.205.53.0 0.0.0.127\naccess-list 12 remark -- VLAN1 mgmt, radius, ntp access --\naccess-list 12 permit 10.1.0.0 0.0.255.255\naccess-list 12 permit 128.205.1.0 0.0.0.255\naccess-list 12 permit 128.205.3.0 0.0.0.255\naccess-list 12 permit 128.205.10.0 0.0.0.255\naccess-list 12 permit 128.205.106.0 0.0.0.255\naccess-list 12 permit 128.205.200.0 0.0.0.255\naccess-list 12 permit 128.205.242.0 0.0.0.127\naccess-list 12 permit 128.205.250.0 0.0.0.255\naccess-list 12 permit 128.205.53.0 0.0.0.127\naccess-list 99 remark ntp\naccess-list 99 permit 128.205.1.69\naccess-list 99 permit 128.205.1.70\naccess-list 99 permit 128.205.1.71\nradius-server dead-criteria time 30 tries 3\n!\nradius server clearpass-int01\n address ipv4 128.205.199.37 auth-port 1812 acct-port 1813\n key 7 000A1015494D040F0C24014F1C0D0D\n!\nradius server clearpass-int02\n address ipv4 128.205.199.38 auth-port 1812 acct-port 1813\n key 7 030A58184B192E454D0C5404020603\n!\n!\n!\ncontrol-plane\n!\n!\nvoice-port 0/0/0\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/1\n timeouts ringing infinity\n!\nvoice-port 0/0/2\n timeouts ringing infinity\n!\nvoice-port 0/0/3\n timeouts ringing infinity\n!\nvoice-port 0/0/4\n timeouts ringing infinity\n!\nvoice-port 0/0/5\n timeouts ringing infinity\n!\nvoice-port 0/0/6\n timeouts ringing infinity\n!\nvoice-port 0/0/7\n timeouts ringing infinity\n!\nvoice-port 0/0/8\n timeouts ringing infinity\n!\nvoice-port 0/0/9\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/10\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/11\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/12\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/13\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/14\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/15\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/16\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/17\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/18\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/19\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/20\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/21\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/22\n timeouts ringing infinity\n shutdown\n!\nvoice-port 0/0/23\n timeouts ringing infinity\n shutdown\n!\nmgcp behavior rsip-range tgcp-only\nmgcp behavior comedia-role none\nmgcp behavior comedia-check-media-src disable\nmgcp behavior comedia-sdp-force disable\n!\nmgcp profile default\n!\nsccp local GigabitEthernet0/0\nsccp ccm 128.205.53.7 identifier 1 version 7.0 \nsccp ccm 128.205.53.10 identifier 2 version 7.0 \nsccp ccm 128.205.53.11 identifier 3 version 7.0 \nsccp\n!\nsccp ccm group 1\n associate ccm 1 priority 1\n associate ccm 2 priority 2\n associate ccm 3 priority 3\n registration retries 32\n registration timeout 180\n connect retries 32\n connect interval 60\n switchback method graceful\n switchback interval 60\n!\n!\nccm-manager config server 128.205.53.9  \nccm-manager sccp local GigabitEthernet0/0\ndial-peer group 1 pots\n service stcapp\n port all\n!\n!\n!\n!\n!\nbanner exec ^C\n\nUB Cisco VG3X0 gateway configuration version: 5\n\n\n^C\nbanner login ^C\n           WARNING!!! You have accessed a private network.\n\n\nOnly University at Buffalo CIT support staff are authorized to log in.\n                 UNAUTHORIZED ACCESS IS UNLAWFUL,\n    and violators may face civil and/or criminal prosecution.\n\n\n    All access attempts are recorded, monitored, and archived.\n\n\n^C\n!\nline con 0\n session-timeout 10 \nline aux 0\nline vty 0 4\n session-timeout 20 \n access-class 11 in\n exec-timeout 20 0\n privilege level 15\n transport input ssh\nline vty 5 15\n session-timeout 20 \n access-class 11 in\n exec-timeout 20 0\n transport input ssh\n!\nscheduler allocate 20000 1000\nntp access-group peer 99\nntp server 128.205.1.69\nntp server 128.205.1.70\nntp server 128.205.1.71\n!\nend",
+        "ansible_net_filesystems": [
+            "flash0:"
+        ],
+        "ansible_net_filesystems_info": {
+            "flash0:": {
+                "spacefree_kb": 180064.0,
+                "spacetotal_kb": 245024.0
+            }
+        },
+        "ansible_net_gather_network_resources": [],
+        "ansible_net_gather_subset": [
+            "hardware",
+            "default",
+            "interfaces",
+            "config"
+        ],
+        "ansible_net_hostname": "vg-cc31-249",
+        "ansible_net_image": "flash0:vg3x0-universalk9-mz.SPA.158-3.M2.bin",
+        "ansible_net_interfaces": {
+            "GigabitEthernet0/0": {
+                "bandwidth": 1000000,
+                "description": "Ensure you configure the correct VVLANID for dot1q encapsulation",
+                "duplex": "Full",
+                "ipv4": [
+                    {
+                        "address": "10.6.31.249",
+                        "subnet": "19"
+                    }
+                ],
+                "lineprotocol": "up",
+                "macaddress": "f80b.cb13.04e8",
+                "mediatype": "RJ45",
+                "mtu": 1500,
+                "operstatus": "up",
+                "type": "CN Gigabit Ethernet"
+            },
+            "GigabitEthernet0/1": {
+                "bandwidth": 1000000,
+                "description": null,
+                "duplex": "Auto",
+                "ipv4": [],
+                "lineprotocol": "down",
+                "macaddress": "f80b.cb13.04e9",
+                "mediatype": "RJ45",
+                "mtu": 1500,
+                "operstatus": "administratively down",
+                "type": "CN Gigabit Ethernet"
+            },
+            "Port-channel1": {
+                "bandwidth": 10000,
+                "description": null,
+                "duplex": null,
+                "ipv4": [],
+                "lineprotocol": "down",
+                "macaddress": "0000.0000.0000",
+                "mediatype": null,
+                "mtu": 1500,
+                "operstatus": "down",
+                "type": "EtherChannel"
+            },
+            "VoIP-Null0": {
+                "ipv6": []
+            },
+            "VoipNull0.1": {
+                "ipv6": []
+            },
+            "VoipNull0.2": {
+                "ipv6": []
+            },
+            "VoipNull0.3": {
+                "ipv6": []
+            },
+            "VoipNull0.4": {
+                "ipv6": []
+            },
+            "VoipNull0.5": {
+                "ipv6": []
+            },
+            "VoipNull0.6": {
+                "ipv6": []
+            }
+        },
+        "ansible_net_iostype": "IOS",
+        "ansible_net_memfree_mb": 780772.0234375,
+        "ansible_net_memtotal_mb": 38623.046875,
+        "ansible_net_model": "VG310",
+        "ansible_net_neighbors": {
+            "GigabitEthernet0/0": [
+                {
+                    "host": "sw-cc4-4.buffalo.edu",
+                    "platform": "cisco WS-C3850-12X48U",
+                    "port": "GigabitEthernet4/0/15"
+                }
+            ]
+        },
+        "ansible_net_python_version": "2.7.5",
+        "ansible_net_serialnum": "FJC2111D0A0",
+        "ansible_net_system": "ios",
+        "ansible_net_version": "15.8(3)M2",
+        "ansible_network_resources": {}
+    },
+    "changed": false,
+    "failed": false
+}

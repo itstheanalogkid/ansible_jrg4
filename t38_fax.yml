@@ -1,0 +1,7 @@
+---
+# Set Cisco IOS T.38 Fax Configuration
+- name: Set Cisco IOS T.38 Fax Configuration
+  hosts: all
+ 
+  roles:
+    - role: t38_fax

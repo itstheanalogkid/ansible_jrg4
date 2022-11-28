@@ -1,0 +1,11 @@
+---
+# tasks file for ssh_security
+
+- name: Set SSH server MAC algorithms
+  cisco.ios.ios_config:
+    lines: ip ssh server algorithm mac hmac-sha2-256 hmac-sha2-512 hmac-sha1
+
+- name: Set SSH server KEX algorithms
+  cisco.ios.ios_config:
+    lines: ip ssh server algorithm kex diffie-hellman-group14-sha1
+

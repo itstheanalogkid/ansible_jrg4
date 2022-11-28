@@ -1,0 +1,7 @@
+---
+# Set AAA and Transport Options
+- name: Set AAA and Transport Options
+  hosts: all
+ 
+  roles:
+    - role: aaa_and_transport

@@ -1,0 +1,14 @@
+---
+# defaults file for ntp_servers
+
+# As of 8/2021, cisco.ios.ios_ntp does not support multiple servers in a list, you have to call it multiple times in a task.
+
+# NTP Servers
+
+ubit_ntp_server_1: 128.205.1.69
+ubit_ntp_server_2: 128.205.1.70
+ubit_ntp_server_3: 128.205.1.71
+
+# Peer ACL
+
+ntp_standard_acl: 99

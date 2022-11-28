@@ -1,0 +1,34 @@
+- hosts: all
+  gather_facts: no
+  connection: network_cli
+  vars:
+  tasks:
+    - name: Get Facts
+      cisco.ios.ios_facts:
+        gather_subset:
+          - all
+          - interfaces
+
+    - name: Print Basic Information
+      debug:
+        msg: "This device is {{ansible_net_hostname}}.\nIt is an {{ansible_net_model}}.\nIt has IPv4 address {{ansible_net_all_ipv4_addresses[0]}}."
+
+    - name: Current Image
+      debug:
+        msg: "This device is running {{ansible_net_image}}. This is an {{ansible_net_iostype}} image.\nIt's also {{ ansible_net_version }}."
+
+    - name: Neighbors
+      debug:
+        msg: "{{ ansible_net_neighbors }}"
+
+    - name: Exec Banner
+      cisco.ios.ios_banner:
+        banner: exec
+        text: " {{ lookup('file', './config_partial/exec_banner.cfg') }} "
+        state: present
+
+    - name: Login Banner
+      cisco.ios.ios_banner:
+        banner: login
+        text: " {{ lookup('file', './config_partial/login_banner.cfg') }} "
+        state: present

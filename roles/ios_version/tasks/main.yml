@@ -1,0 +1,46 @@
+---
+# Main tasks for this role
+
+- name: Get IOS Device Facts
+  cisco.ios.ios_facts:
+
+# The version will be in ansible_net_version
+# The current IOS Version is in the role default current_ios_version
+
+- name: Non-Compliant Device Notification
+  debug:
+    msg: "Non Compliant Version: {{ansible_net_version}}. Device will be upgraded."
+  when: (ansible_net_version != current_ios_version) and push_new_code
+  
+- name: Non-Compliant Devices When Code Push Not Enabled
+  debug:
+    msg: "Non Compliant version: {{ansible_net_version}}, however upgrade is not enabled."
+  when: (ansible_net_version == current_ios_version) and not push_new_code
+
+- name: Add Non-Compliant Devices To List
+  set_fact:
+    needs_upgrade: true
+  when: (ansible_net_version != current_ios_version)
+
+- name: Generate Report
+  template:
+    src: ios_version_report.j2
+    dest: ios_version_report.txt
+  delegate_to: localhost
+  run_once: true
+
+- name: E-Mail Report
+  mail:
+    host: smtp.buffalo.edu
+    port: 587
+    username: "{{ oss_voip_mail_user }}"
+    password: "{{ oss_voip_mail_password }}"
+    to: Adam Pawlowski <ajp26@buffalo.edu>
+    from: NCS VoIP Script <ncsvae@buffalo.edu>
+    subject: Cisco VG IOS Version Check Report
+#    body: 'See the attached output for the results of the Cisco VG IOS Version Check'
+#    attach: ios_version_report.txt
+    body: "{{ lookup('template', 'ios_version_report.j2') }}"
+    secure: starttls
+  run_once: true
+  delegate_to: localhost

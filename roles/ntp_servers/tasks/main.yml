@@ -1,0 +1,25 @@
+---
+# tasks file for ntp_servers
+
+- name: Set NTP Servers
+  cisco.ios.ios_ntp:
+    server: "{{ ubit_ntp_server_1 }}"
+    state: present
+  cisco.ios.ios_ntp:
+    server: "{{ ubit_ntp_server_2 }}"
+    state: present
+  cisco.ios.ios_ntp:
+    server: "{{ ubit_ntp_server_3 }}"
+    state: present
+  cisco.ios.ios_ntp:
+    server: 128.205.1.2
+    state: absent
+  cisco.ios.ios_ntp:
+    server: 128.205.106.1
+    state: absent
+
+- name: Set NTP Peer ACL
+  cisco.ios.ios_ntp:
+    acl: 99
+    state: present
+

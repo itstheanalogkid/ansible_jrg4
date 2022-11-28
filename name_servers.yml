@@ -1,0 +1,7 @@
+---
+# Set Cisco IOS Name Servers
+- name: Set Cisco IOS Name Servers
+  hosts: all
+ 
+  roles:
+    - role: name_servers

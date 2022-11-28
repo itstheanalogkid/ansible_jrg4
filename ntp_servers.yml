@@ -1,0 +1,7 @@
+---
+# Set Cisco IOS NTP Servers
+- name: Set Cisco IOS NTP Server Configuration
+  hosts: all
+ 
+  roles:
+    - role: ntp_servers

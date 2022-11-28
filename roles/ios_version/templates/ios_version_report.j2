@@ -1,0 +1,18 @@
+Cisco VG IOS Version Report
+Report Run Time: {{ current_date_time }}
+
+The following devices were checked to see if they're running Cisco IOS {{ current_ios_version }}.
+
+{% for i in ansible_play_batch | sort %}
+{% if hostvars[i]['ansible_net_version'] != current_ios_version %}
+{{ hostvars[i]['ansible_net_hostname'] }} ({{ i }}):
+ - Model: {{ hostvars[i]['ansible_net_model'] }}
+ - IOS Version: BAD: {{ hostvars[i]['ansible_net_version'] }}
+ - Needs Upgrade: {{ (hostvars[i]['needs_upgrade']) | default('False') }}
+{% else -%}
+{{ hostvars[i]['ansible_net_hostname'] }} ({{ i }}): 
+ - Model: {{ hostvars[i]['ansible_net_model'] }}
+ - IOS Version: OK
+ - Needs Upgrade: {{ (hostvars[i]['needs_upgrade']) | default('False') }}
+{% endif %}
+{% endfor %}

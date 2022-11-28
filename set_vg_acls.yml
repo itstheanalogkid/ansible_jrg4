@@ -1,0 +1,7 @@
+---
+# Set Cisco Voice Gateway ACLs
+- name: Set Cisco VG ACLs
+  hosts: all
+ 
+  roles:
+    - role: cisco_vg_acl

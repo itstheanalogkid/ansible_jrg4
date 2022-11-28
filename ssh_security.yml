@@ -1,0 +1,7 @@
+---
+# Set Cisco IOS SSH Security Parameters
+- name: Set Cisco IOS SSH Security Parameters
+  hosts: all
+ 
+  roles:
+    - role: ssh_security

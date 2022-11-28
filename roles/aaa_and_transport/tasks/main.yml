@@ -1,0 +1,10 @@
+---
+# tasks file for aaa_and_transport
+
+- name: Enable Secure Copy (SCP)
+  cisco.ios.ios_config:
+    lines: ip scp server enable
+
+- name: Save configuration if changed
+  cisco.ios.ios_config:
+    save_when: modified

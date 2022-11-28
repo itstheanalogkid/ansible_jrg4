@@ -1,0 +1,7 @@
+---
+# Get Cisco IOS Version and Generate Report
+- name: Get Cisco IOS Version
+  hosts: all
+ 
+  roles:
+    - role: ios_version

@@ -1,0 +1,127 @@
+acls:
+-   acls:
+    -   aces:
+        -   grant: permit
+            sequence: 10
+            source:
+                address: 128.205.1.0
+                wildcard_bits: 0.0.0.255
+        -   grant: permit
+            sequence: 20
+            source:
+                address: 128.205.3.0
+                wildcard_bits: 0.0.0.255
+        -   grant: permit
+            sequence: 30
+            source:
+                address: 128.205.10.0
+                wildcard_bits: 0.0.0.255
+        -   grant: permit
+            sequence: 40
+            source:
+                address: 128.205.164.0
+                wildcard_bits: 0.0.0.31
+        -   grant: permit
+            sequence: 50
+            source:
+                address: 128.205.250.0
+                wildcard_bits: 0.0.0.255
+        acl_type: standard
+        name: '10'
+    -   aces:
+        -   grant: permit
+            sequence: 10
+            source:
+                address: 128.205.1.0
+                wildcard_bits: 0.0.0.255
+        -   grant: permit
+            sequence: 20
+            source:
+                address: 128.205.3.0
+                wildcard_bits: 0.0.0.255
+        -   grant: permit
+            sequence: 30
+            source:
+                address: 128.205.10.0
+                wildcard_bits: 0.0.0.255
+        -   grant: permit
+            sequence: 40
+            source:
+                address: 128.205.242.0
+                wildcard_bits: 0.0.0.127
+        -   grant: permit
+            sequence: 50
+            source:
+                address: 128.205.250.0
+                wildcard_bits: 0.0.0.255
+        -   grant: permit
+            sequence: 60
+            source:
+                address: 128.205.53.0
+                wildcard_bits: 0.0.0.127
+        acl_type: standard
+        name: '11'
+    -   aces:
+        -   grant: permit
+            sequence: 10
+            source:
+                address: 10.1.0.0
+                wildcard_bits: 0.0.255.255
+        -   grant: permit
+            sequence: 20
+            source:
+                address: 128.205.1.0
+                wildcard_bits: 0.0.0.255
+        -   grant: permit
+            sequence: 30
+            source:
+                address: 128.205.3.0
+                wildcard_bits: 0.0.0.255
+        -   grant: permit
+            sequence: 40
+            source:
+                address: 128.205.10.0
+                wildcard_bits: 0.0.0.255
+        -   grant: permit
+            sequence: 50
+            source:
+                address: 128.205.106.0
+                wildcard_bits: 0.0.0.255
+        -   grant: permit
+            sequence: 60
+            source:
+                address: 128.205.200.0
+                wildcard_bits: 0.0.0.255
+        -   grant: permit
+            sequence: 70
+            source:
+                address: 128.205.242.0
+                wildcard_bits: 0.0.0.127
+        -   grant: permit
+            sequence: 80
+            source:
+                address: 128.205.250.0
+                wildcard_bits: 0.0.0.255
+        -   grant: permit
+            sequence: 90
+            source:
+                address: 128.205.53.0
+                wildcard_bits: 0.0.0.127
+        acl_type: standard
+        name: '12'
+    -   aces:
+        -   grant: permit
+            sequence: 10
+            source:
+                address: 128.205.1.69
+        -   grant: permit
+            sequence: 20
+            source:
+                address: 128.205.1.70
+        -   grant: permit
+            sequence: 30
+            source:
+                address: 128.205.1.71
+        acl_type: standard
+        name: '99'
+    afi: ipv4

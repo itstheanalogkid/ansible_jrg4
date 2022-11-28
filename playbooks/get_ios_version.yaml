@@ -1,0 +1,18 @@
+---
+# Get Cisco IOS Version
+- name: Get Cisco IOS Version
+  hosts: all
+
+  tasks:
+    - name: Check Current IOS Version
+      cisco.ios.ios_facts:
+
+    - debug:
+        msg: 
+        - "Current version is {{ ansible_net_version }}"
+
+    - debug:
+        msg:
+        - "Image is not compliant, and needs address."
+
+      when: ansible_net_version != current_ios_version

@@ -1,0 +1,9 @@
+- hosts: all
+  gather_facts: no
+  vars:
+    ansible_user: "{{ lookup('env', 'VOIP_ANSIBLE_USER') }}"
+    ansible_pass: "{{ lookup('env', 'VOIP_ANSIBLE_PASS') }}"
+  user: "{{ ansible_user }}"
+  tasks:
+    - name: PING HOSTS
+      ping:

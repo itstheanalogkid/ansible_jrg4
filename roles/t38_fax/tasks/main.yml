@@ -1,0 +1,13 @@
+---
+# tasks file for t38_fax
+
+- name: Set FAX protocol to T.38 3 with g711u fallback
+  cisco.ios.ios_config:
+    lines: 
+    - fax protocol t38 nse force version 0 ls-redundancy 0 hs-redundancy 0 fallback pass-through g711ulaw
+    - fax-relay ans-disable
+    parents: voice service voip
+
+- name: Save running configuratino
+  cisco.ios.ios_config:
+    save_when: modified
