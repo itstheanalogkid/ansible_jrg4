@@ -4,7 +4,7 @@
 
 # Theory
 
-This is a work-in-progress collection of Ansible roles designed to manage the Cisco IOS configuration for Communication Services devices:
+This is a collection of Ansible roles designed to manage the Cisco IOS configuration for Communication Services devices:
 
 * Cisco VG204XM
 * Cisco VG310
@@ -14,7 +14,7 @@ Each role enforces the state of a certain block of configuration.
 However, this is not designed to strip or remove unknown sections of configuration.
 It is therefore important not to make ad-hoc changes, lest the device's configuration become unpredictable.
 
-use paramiko for connectivity. The system currently doesn't support standard SSH for Ansible.
+From netstats use paramiko for connectivity. The system currently doesn't support standard SSH for Ansible.
 
 # Roles
 
