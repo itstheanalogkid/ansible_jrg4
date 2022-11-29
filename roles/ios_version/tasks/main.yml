@@ -35,7 +35,7 @@
     port: 587
     username: "{{ oss_voip_mail_user }}"
     password: "{{ oss_voip_mail_password }}"
-    to: Adam Pawlowski <ajp26@buffalo.edu>
+    to: James Giardina <jrg4@buffalo.edu>
     from: NCS VoIP Script <ncsvae@buffalo.edu>
     subject: Cisco VG IOS Version Check Report
 #    body: 'See the attached output for the results of the Cisco VG IOS Version Check'
