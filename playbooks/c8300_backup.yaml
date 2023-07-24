@@ -1,0 +1,19 @@
+---
+# Playbook to backup all the C8300 VoIP Gateways
+
+# Backup running config on the VoIP share \\itorg\ubfs\VoIP\backup\c8300\
+
+- name: Backup the running configs of all C8300 series PSTN gateways to ubfs
+  hosts: C8300
+  gather_facts: no
+
+  tasks:
+    - name: Get the running config from each device
+      ios_command:
+        commands: show run
+      register: config
+
+    - name: Save running config output for each device to /mnt/VoIP/backup/c8300/
+      copy:
+        content: "{{config.stdout[0]}}"
+        dest: "/mnt/VoIP/backup/c8300/{{inventory_hostname}}.cfg"
