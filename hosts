@@ -140,7 +140,7 @@ ansible_become=yes
 ansible_become_password=
 
 [ALL_VG:children]
-VG204XM
+VG204
 VG310
 VG320
 
