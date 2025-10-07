@@ -4,5 +4,7 @@
 			"path": ".."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"ansible.python.interpreterPath": "c:\\MyGIT\\ansible_jrg4\\.venv\\Scripts\\python.exe"
+	}
 }
